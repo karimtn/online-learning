@@ -16,7 +16,7 @@ const UserSchema = new Schema({
         type: String
     },
     tel: {
-        type: number
+        type: Number
     },
     pass: {
         type: String

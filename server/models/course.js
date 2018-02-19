@@ -16,7 +16,7 @@ const CourseSchema = new Schema({
         type: String
     },
     likes:{
-        type: number
+        type: Number
     },
     comments:[{
         userId: String,
@@ -24,7 +24,7 @@ const CourseSchema = new Schema({
         date: String
     }],
     view:{
-        type: number
+        type: Number
     }
 });
 
