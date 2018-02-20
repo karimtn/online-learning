@@ -23,6 +23,7 @@ import { MaterialModule } from './material.module';
 import {BrowserAnimationsModule, NoopAnimationsModule} from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from './auth.service';
+import { AuthGuard } from './auth.guard';
 
 
 @NgModule({
@@ -51,7 +52,7 @@ import { AuthService } from './auth.service';
     ReactiveFormsModule,
     FormsModule
   ],
-  providers: [CoursesService,AuthService],
+  providers: [CoursesService,AuthService,AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -12,15 +12,18 @@ import { RegisterComponent } from './register/register.component';
 import { SearchComponent } from './search/search.component';
 import { UsersComponent } from './users/users.component';
 import { ViewcourseComponent } from './viewcourse/viewcourse.component';
+import { AuthGuard } from './auth.guard';
 
 const routes: Routes = [
   {
     path:'addcourses',
-    component:AddcourseComponent
+    component:AddcourseComponent,
+    canActivate: [AuthGuard]
   },
   {
     path:'comment',
-    component:CommentComponent
+    component:CommentComponent,
+    canActivate: [AuthGuard]
   },
   {
     path:'contact',
@@ -32,7 +35,8 @@ const routes: Routes = [
   },
   {
     path:'dashbord',
-    component:DashbordComponent
+    component:DashbordComponent,
+    canActivate: [AuthGuard]
   },
   {
     path:'',
@@ -56,7 +60,8 @@ const routes: Routes = [
   },
   {
     path:'users',
-    component:UsersComponent
+    component:UsersComponent,
+    canActivate: [AuthGuard]
   },
   {
     path:'viewcourses',
