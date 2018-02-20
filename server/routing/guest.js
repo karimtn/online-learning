@@ -2,29 +2,35 @@ const express = require('express');
 const router = express.Router();
 const MongoClient = require('mongodb').MongoClient;
 const ObjectID = require('mongodb').ObjectID;
+const bodyParser=require('body-parser');
 
-const url='mongodb://localhost:27017/';
-const dbn='coursesDb';
+router.use(bodyParser.json());
 
-const con=((closure)=>{
-    return MongoClient.connect(url+dbn,(err,client)=>{
-        if (err) throw err;
-        let db=client.db(dbn);
-        closure(db);
-    })
-});
-
-router.get('/:id',(req,res)=>{ //guest courses
+router.get('/:id', (req, res)=>{//guest courses
     let N={_id:ObjectID(req.params.id)};
-    con((db)=>{
-        db.collection(dbn).findOne(N).then((rslt)=>{
+    coursesDb.findOne(N).then((rslt)=>{
             response.data=rslt;
             response.message="ok";
             res.json(response);
         }).catch((err)=>{
             sendError(err,res,501);
         })
-            console.log('course selected');
+            res.se('course selected');
         })
-    });
+    
+
+    // Error handling
+const sendError = (err, res, code) => {
+    response.status = code;
+    response.message = typeof err == 'object' ? err.message : err;
+    res.status(code).json(response);
+  };
+  
+  // Response handling
+  let response = {
+    status: 200,
+    data: [],
+    message: null
+  };
+
 module.exports=router;
