@@ -22,6 +22,8 @@ import { ViewcoursesComponent } from './viewcourses/viewcourses.component';
 import { MaterialModule } from './material.module';
 import {BrowserAnimationsModule, NoopAnimationsModule} from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AuthService } from './auth.service';
+import { AuthGuard } from './auth.guard';
 
 
 @NgModule({
@@ -50,7 +52,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ReactiveFormsModule,
     FormsModule
   ],
-  providers: [CoursesService],
+  providers: [CoursesService,AuthService,AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

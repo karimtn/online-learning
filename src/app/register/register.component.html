@@ -1,6 +1,5 @@
 <div class="basic-container">
     <form [formGroup]="registerForm" (ngSubmit)="onClickRegister(registerForm.value)">
-  
       <mat-card>
         <mat-card-header>
           <h1 class="title">
@@ -13,20 +12,21 @@
             <input matInput formControlName="email" type="text" required placeholder="Email">
           </mat-input-container>
           <mat-input-container floatPlaceholder="auto">
-            <input matInput formControlName="firstname" type="text" required placeholder="Nom">
+            <input matInput formControlName="name" type="text" required placeholder="Nom">
           </mat-input-container>
           <mat-input-container floatPlaceholder="auto">
             <input matInput formControlName="lastname" type="text" required placeholder="Prénom">
           </mat-input-container>
           
           <mat-input-container floatPlaceholder="auto">
-            <input matInput formControlName="password" [type]="hide ? 'password' : 'text'" required placeholder="Mot de passe">
+            <input matInput formControlName="pass" [type]="hide ? 'password' : 'text'" required placeholder="Mot de passe">
             <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
           </mat-input-container>
           <div class="button-row">
             <button mat-raised-button routerLink="/login">Vous avez un compte ?</button>
             <button mat-raised-button color="primary" type="submit" (click)="onClickRegister()">S'enregistrer</button>
           </div>
+          <mat-progress-bar mode="indeterminate" progress [style.visibility]="(visible == 0) ? 'hidden' : 'visible' "></mat-progress-bar>
         </div>
       </mat-card>
     </form>
