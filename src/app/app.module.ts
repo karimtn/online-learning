@@ -19,6 +19,9 @@ import { SearchComponent } from './search/search.component';
 import { UsersComponent } from './users/users.component';
 import { ViewcoursesComponent } from './viewcourses/viewcourses.component';
 
+import { MaterialModule } from './material.module';
+import {BrowserAnimationsModule, NoopAnimationsModule} from '@angular/platform-browser/animations';
+
 
 @NgModule({
   declarations: [
@@ -39,8 +42,10 @@ import { ViewcoursesComponent } from './viewcourses/viewcourses.component';
   imports: [
     AppRoutingModule,
     BrowserModule,
-    HttpModule
-
+    HttpModule,
+    MaterialModule,
+    BrowserAnimationsModule,
+    NoopAnimationsModule
   ],
   providers: [CoursesService],
   bootstrap: [AppComponent]
