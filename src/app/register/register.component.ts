@@ -11,10 +11,8 @@ import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 })
 export class RegisterComponent implements OnInit {
 
-  hide = true;
-
   registerForm: FormGroup;
-  constructor(private fb: FormBuilder, , private authService: AuthService, private router: Router) {
+  constructor(private fb: FormBuilder, private authService: AuthService, private router: Router) {
 
     this.registerForm = fb.group(
       {
@@ -27,6 +25,7 @@ export class RegisterComponent implements OnInit {
   }
 
   ngOnInit() {
+    let hide = true;
   }
 
   onClickRegister(register) {
@@ -36,6 +35,7 @@ export class RegisterComponent implements OnInit {
           this.router.navigateByUrl('');
         }
       });
+      return false;
   }
 
 }

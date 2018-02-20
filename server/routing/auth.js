@@ -17,7 +17,7 @@ const sendError = (err, res, code) => {
   };
 
 router.post('/register', (req, res) => {
-    console.log(req.body);
+    //console.log(req.body);
     let newUser = new User({
         email: req.body.email,
         lastname: req.body.lastname,
