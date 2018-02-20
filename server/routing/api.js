@@ -9,6 +9,17 @@ router.get('/', (req, res)=>{
     res.send('Courses API work !')
 });
 
+// Send contact us
+router.post('/contact', (req, res)=>{
+
+});
+
+// show contact us
+router.get('/contact', (req, res)=>{
+
+});
+
+
 // Error handling
 const sendError = (err, res, code) => {
     response.status = code;
