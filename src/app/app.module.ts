@@ -21,6 +21,7 @@ import { ViewcoursesComponent } from './viewcourses/viewcourses.component';
 
 import { MaterialModule } from './material.module';
 import {BrowserAnimationsModule, NoopAnimationsModule} from '@angular/platform-browser/animations';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -45,7 +46,9 @@ import {BrowserAnimationsModule, NoopAnimationsModule} from '@angular/platform-b
     HttpModule,
     MaterialModule,
     BrowserAnimationsModule,
-    NoopAnimationsModule
+    NoopAnimationsModule,
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [CoursesService],
   bootstrap: [AppComponent]
