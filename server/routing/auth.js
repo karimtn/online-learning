@@ -9,9 +9,15 @@ let response = {
     message: null
   };
 
+  // Error handling
+const sendError = (err, res, code) => {
+    response.status = code;
+    response.message = typeof err == 'object' ? err.message : err;
+    res.status(code).json(response);
+  };
 
 router.post('/register', (req, res) => {
-  //  console.log(req.body);
+    console.log(req.body);
     let newUser = new User({
         email: req.body.email,
         lastname: req.body.lastname,
@@ -21,11 +27,11 @@ router.post('/register', (req, res) => {
         userType: req.body.userType
     });
 
- //   console.log('newUser', newUser);
+    console.log('newUser', newUser);
 
     newUser.save((err, user) => {
         if(err)
-            sendError(err,user,500);
+            sendError(err,res,500);
         else {
             response.data = user;
             response.message = "OK";

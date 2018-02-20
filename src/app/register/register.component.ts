@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../auth.service';
+
+import { Router } from '@angular/router';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 
 @Component({
@@ -11,19 +14,28 @@ export class RegisterComponent implements OnInit {
   hide = true;
 
   registerForm: FormGroup;
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, , private authService: AuthService, private router: Router) {
 
     this.registerForm = fb.group(
       {
         'email': ['', [Validators.email, Validators.required]],
-        'firstname': ['', Validators.required ],
+        'name': ['', Validators.required ],
         'lastname': ['' , Validators.required],
-        'password': ['', Validators.minLength(8)],
+        'pass': ['', Validators.minLength(8)],
       }
     );
   }
 
   ngOnInit() {
+  }
+
+  onClickRegister(register) {
+    this.authService.register(this.registerForm.value)
+      .subscribe((res)=>{
+        if(res == true) {
+          this.router.navigateByUrl('');
+        }
+      });
   }
 
 }
