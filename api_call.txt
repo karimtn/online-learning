@@ -1,0 +1,28 @@
+Register API :
+**************
+
+POST : 
+
+http://localhost:3000/auth/register 
+
+{
+  "email":"user@gmail.com",
+  "lastname":"Ben Foulen",
+  "name":"user",
+  "pass":"'user",
+  "pic": "http://emblemsbattlefield.com/uploads/posts/2014/10/facebook-default-photo-male_1.jpg",
+  "usertype": "user"
+}
+
+----------------------------------------------------
+
+Login API :
+
+POST :
+
+http://localhost:3000/auth/login
+
+{
+  "email":"user@gmail.com",
+  "pass":"'user",
+}
