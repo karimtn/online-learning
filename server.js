@@ -1,11 +1,15 @@
 const express = require('express');
 const bodyparser = require('body-parser');
+const passport = require('passport');
+const cors = require('cors');
+const path = require('path');
 const port = 3000;
 const app = express();
 const mongoose = require('mongoose');
+app.use(cors());
 
 const api = require('./server/routing/api')
-const auth = require('./server/routing/auth') 
+const auth = require('./server/routing/auth')
 
 app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
@@ -24,6 +28,10 @@ mongoose.connection.on('connected', () => {
 mongoose.connection.on('error', (err) => {
     console.log('Unable to connect to the database ' + err);
 });
+app.use(passport.initialize());
+app.use(passport.session());
+require('./server/config/passport')(passport);
+//app.use(express.static(path.join(__dirname, 'dist')));
 
 app.use('/api',api);
 

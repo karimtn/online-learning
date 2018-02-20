@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const jwt = require('jsonwebtoken');
 const User = require('../models/user');
 
 // Response handling
@@ -7,7 +8,7 @@ let response = {
     data: [],
     message: null
   };
-  
+
 
 router.post('/register', (req, res) => {
   //  console.log(req.body);
@@ -19,7 +20,7 @@ router.post('/register', (req, res) => {
         pic: req.body.pic,
         userType: req.body.userType
     });
-    
+
  //   console.log('newUser', newUser);
 
     newUser.save((err, user) => {
@@ -28,10 +29,53 @@ router.post('/register', (req, res) => {
         else {
             response.data = user;
             response.message = "OK";
-            res.json(response);    
+            res.json(response);
         }
 
     })
+});
+router.post('/login', (req, res) => {
+  const password = req.body.pass;
+  User.findOne({ email: req.body.email }, (err, user) => {
+      if (err) {
+          return res.send({
+              success: false,
+              message: 'Error, please try again'
+          });
+      }
+
+      if (!user) {
+          return res.send({
+              success: false,
+              message: 'Error, Account not found'
+          });
+      }
+
+      user.isPasswordMatch(password, user.pass, (err, isMatch) => {
+          console.log(password);
+          if (!isMatch) {
+              return res.send({
+                  success: false,
+                  message: 'Error, Invalid Password'
+              });
+          }
+          const token = jwt.sign({ user }, "SECRET", { expiresIn: 604800 });
+
+          let returnUser = {
+              name: user.name,
+              email: user.email,
+              id: user._id
+          }
+
+          return res.send({
+              success: true,
+              message: 'You can login now',
+              user: returnUser,
+              token
+          });
+
+      });
+  });
 });
 
 module.exports = router;
