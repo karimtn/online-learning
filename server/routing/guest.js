@@ -6,7 +6,7 @@ const bodyParser=require('body-parser');
 
 router.use(bodyParser.json());
 
-router.get('/:id', (req, res)=>{//guest courses
+router.get('/:id', (req, res)=>{//search guest courses
     let N={_id:ObjectID(req.params.id)};
     coursesDb.findOne(N).then((rslt)=>{
             response.data=rslt;
@@ -16,8 +16,19 @@ router.get('/:id', (req, res)=>{//guest courses
             sendError(err,res,501);
         })
             res.se('course selected');
-        })
+});
     
+router.get('/courses', (req, res)=>{//guest courses
+    coursesDb.findOne(N).then((rslt)=>{
+            response.data=rslt.title;
+            response.message="ok";
+            res.json(response);
+        }).catch((err)=>{
+            sendError(err,res,501);
+        })
+            res.se('course selected');
+});
+
 
     // Error handling
 const sendError = (err, res, code) => {
