@@ -1,6 +1,7 @@
 import { Http } from '@angular/http';
 import { Injectable } from '@angular/core';
 import 'rxjs/add/operator/map';
+// tslint:disable-next-line:import-blacklist
 import { Observable } from 'rxjs';
 
 @Injectable()

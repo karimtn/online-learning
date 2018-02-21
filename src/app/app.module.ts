@@ -2,13 +2,13 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {HttpModule} from '@angular/http';
 
-import { AppRoutingModule } from './app-routing.module';
+import { AppRoutingModule } from './app.routing.module';
 import { AppComponent } from './app.component';
 import { CoursesService } from './courses.service';
 import { HttpClient } from 'selenium-webdriver/http';
 import { AddcoursesComponent } from './addcourses/addcourses.component';
 import { CommentsComponent } from './comments/comments.component';
-import { ContactusComponent } from './contactus/contactus.component';
+import { ContactComponent } from './contact/contact.component';
 import { CoursesComponent } from './courses/courses.component';
 import { DashbordComponent } from './dashbord/dashbord.component';
 import { HomeComponent } from './home/home.component';
@@ -31,7 +31,7 @@ import { AuthGuard } from './auth.guard';
     AppComponent,
     AddcoursesComponent,
     CommentsComponent,
-    ContactusComponent,
+    ContactComponent,
     CoursesComponent,
     DashbordComponent,
     HomeComponent,
@@ -52,7 +52,9 @@ import { AuthGuard } from './auth.guard';
     ReactiveFormsModule,
     FormsModule
   ],
-  providers: [CoursesService,AuthService,AuthGuard],
+  providers: [CoursesService,
+    AuthService,
+    AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
