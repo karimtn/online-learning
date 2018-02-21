@@ -1,5 +1,5 @@
 <div class="basic-container">
-<form [formGroup]="contactForm" (ngSubmit)="OnClickContact(contactForm.value)">
+<form [formGroup]="contactForm" (ngSubmit)="onClickContact(contactForm.value)">
     <mat-card>
         <mat-card-header>
           <h1 class="title">
@@ -21,7 +21,7 @@
             matAutosizeMaxRows="5" formControlName="message" required></textarea>
           </mat-input-container>
           <div class="button-row">
-              <button mat-raised-button color="primary" type="submit" (click)="onClickRegister()">Envoyer</button>
+              <button mat-raised-button color="primary" type="submit" (click)="onClickContact()">Envoyer</button>
             </div>
             <mat-progress-bar mode="indeterminate" progress [style.visibility]="(visible == 0) ? 'hidden' : 'visible' "></mat-progress-bar>
           </div>
