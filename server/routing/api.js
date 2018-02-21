@@ -7,21 +7,6 @@ const Contact = require('../models/contact');
 
 router.use(bodyParser.json());
 
-// Response handling
-let response = {
-  status: 200,
-  data: [],
-  message: null
-};
-
-// Error handling
-const sendError = (err, res, code) => {
-  response.status = code;
-  response.message = typeof err == 'object' ? err.message : err;
-  res.status(code).json(response);
-};
-
-
 /*router.get('/', (req, res)=>{
     res.send('Courses API work !')
 });*/
