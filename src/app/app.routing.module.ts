@@ -13,6 +13,7 @@ import { SearchComponent } from './search/search.component';
 import { UsersComponent } from './users/users.component';
 import { ViewcoursesComponent } from './viewcourses/viewcourses.component';
 import { AuthGuard } from './auth.guard';
+import { DashmenuComponent } from './dashmenu/dashmenu.component';
 
 const routes: Routes = [
   {
@@ -66,6 +67,10 @@ const routes: Routes = [
   {
     path: 'viewcourses',
     component: ViewcoursesComponent
+  },
+  {
+    path: 'dashmenu',
+    component: DashmenuComponent
   }
 ];
 

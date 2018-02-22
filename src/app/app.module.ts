@@ -18,6 +18,7 @@ import { RegisterComponent } from './register/register.component';
 import { SearchComponent } from './search/search.component';
 import { UsersComponent } from './users/users.component';
 import { ViewcoursesComponent } from './viewcourses/viewcourses.component';
+import { DashmenuComponent } from './dashmenu/dashmenu.component';
 
 import { MaterialModule } from './material.module';
 import {BrowserAnimationsModule, NoopAnimationsModule} from '@angular/platform-browser/animations';
@@ -40,7 +41,8 @@ import { AuthGuard } from './auth.guard';
     RegisterComponent,
     SearchComponent,
     UsersComponent,
-    ViewcoursesComponent
+    ViewcoursesComponent,
+    DashmenuComponent
   ],
   imports: [
     AppRoutingModule,
