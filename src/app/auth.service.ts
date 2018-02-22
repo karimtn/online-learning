@@ -1,7 +1,7 @@
 import { Http } from '@angular/http';
 import { Injectable } from '@angular/core';
 import 'rxjs/add/operator/map';
-import { Observable } from 'rxjs';
+import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class AuthService {
@@ -22,12 +22,15 @@ export class AuthService {
   login(user) {
     return this.http.post('http://localhost:3000/auth/login', user)
       .map((res) => {
-        if (res.json().message === 'ok') {
-          this.saveSession();
-          return true;
+        console.log(user);
+
+        if (res.status === 200) {
+        this.saveSession();
+        return true;
         } else {
           return res.json().message;
-        }
+          }
+
       });
   }
   saveSession() {

@@ -58,7 +58,6 @@ router.post('/login', (req, res) => {
       }
 
       user.isPasswordMatch(password, user.pass, (err, isMatch) => {
-          console.log(password);
           if (!isMatch) {
               return res.send({
                   success: false,
@@ -75,7 +74,7 @@ router.post('/login', (req, res) => {
 
           return res.send({
               success: true,
-              message: 'You can login now',
+              message: 'ok',
               user: returnUser,
               token
           });

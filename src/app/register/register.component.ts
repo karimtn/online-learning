@@ -25,13 +25,13 @@ export class RegisterComponent implements OnInit {
   }
 
   ngOnInit() {
-    let hide = true;
+    const hide = true;
   }
 
   onClickRegister(register) {
     this.authService.register(this.registerForm.value)
-      .subscribe((res)=>{
-        if(res == true) {
+      .subscribe((res) => {
+        if (res === true) {
           this.router.navigateByUrl('');
         }
       });

@@ -58,11 +58,11 @@ UserSchema.pre('save', function (next) {
 UserSchema.methods.isPasswordMatch = function (plainPassword, hashed, callback) {
     bcrypt.compare(plainPassword, hashed, (err, isMatch) => {
         if (err) {
-            next(err);
-        }
+           next(err);
+         }
         callback(null, isMatch);
     });
-}
+};
 
 module.exports = mongoose.model('User', UserSchema);
 
