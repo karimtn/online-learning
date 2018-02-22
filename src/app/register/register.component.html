@@ -26,6 +26,7 @@
             <button mat-raised-button routerLink="/login">Vous avez un compte ?</button>
             <button mat-raised-button color="primary" type="submit" (click)="onClickRegister()">S'enregistrer</button>
           </div>
+          <mat-progress-bar mode="indeterminate" progress [style.visibility]="(visible == 0) ? 'hidden' : 'visible' "></mat-progress-bar>
         </div>
       </mat-card>
     </form>

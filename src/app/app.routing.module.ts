@@ -1,7 +1,7 @@
 import { NgModule, Component } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { AddcourseComponent } from './addcourse/addcourse.component';
-import { CommentComponent } from './comment/comment.component';
+import { AddcoursesComponent } from './addcourses/addcourses.component';
+import { CommentsComponent } from './comments/comments.component';
 import { ContactComponent } from './contact/contact.component';
 import { CoursesComponent } from './courses/courses.component';
 import { DashbordComponent } from './dashbord/dashbord.component';
@@ -11,62 +11,72 @@ import { MenuComponent } from './menu/menu.component';
 import { RegisterComponent } from './register/register.component';
 import { SearchComponent } from './search/search.component';
 import { UsersComponent } from './users/users.component';
-import { ViewcourseComponent } from './viewcourse/viewcourse.component';
+import { ViewcoursesComponent } from './viewcourses/viewcourses.component';
+import { AuthGuard } from './auth.guard';
+import { DashmenuComponent } from './dashmenu/dashmenu.component';
 
 const routes: Routes = [
   {
-    path:'addcourses',
-    component:AddcourseComponent
+    path: 'addcourses',
+    component: AddcoursesComponent,
+    canActivate: [AuthGuard]
   },
   {
-    path:'comment',
-    component:CommentComponent
+    path: 'comment',
+    component: CommentsComponent,
+    canActivate: [AuthGuard]
   },
   {
-    path:'contact',
-    component:ContactComponent
+    path: 'contact',
+    component: ContactComponent
   },
   {
-    path:'courses',
-    component:CoursesComponent
+    path: 'courses',
+    component: CoursesComponent
   },
   {
-    path:'dashbord',
-    component:DashbordComponent
+    path: 'dashbord',
+    component: DashbordComponent,
+    canActivate: [AuthGuard]
   },
   {
-    path:'',
-    component:HomeComponent
+    path: '',
+    component: HomeComponent
   },
   {
-    path:'login',
-    component:LoginComponent
+    path: 'login',
+    component: LoginComponent
   },
   {
-    path:'menu',
-    component:MenuComponent
+    path: 'menu',
+    component: MenuComponent
   },
   {
-    path:'register',
-    component:RegisterComponent
+    path: 'register',
+    component: RegisterComponent
   },
   {
-    path:'search',
-    component:SearchComponent
+    path: 'search',
+    component: SearchComponent
   },
   {
-    path:'users',
-    component:UsersComponent
+    path: 'users',
+    component: UsersComponent,
+    canActivate: [AuthGuard]
   },
   {
-    path:'viewcourses',
-    component:ViewcourseComponent
+    path: 'viewcourses',
+    component: ViewcoursesComponent
+  },
+  {
+    path: 'dashmenu',
+    component: DashmenuComponent
   }
 ];
-  
+
   @NgModule({
     imports: [RouterModule.forRoot(routes)],
     exports: [RouterModule]
   })
   export class AppRoutingModule { }
-  
+

@@ -2,13 +2,13 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {HttpModule} from '@angular/http';
 
-import { AppRoutingModule } from './app-routing.module';
+import { AppRoutingModule } from './app.routing.module';
 import { AppComponent } from './app.component';
 import { CoursesService } from './courses.service';
 import { HttpClient } from 'selenium-webdriver/http';
 import { AddcoursesComponent } from './addcourses/addcourses.component';
 import { CommentsComponent } from './comments/comments.component';
-import { ContactusComponent } from './contactus/contactus.component';
+import { ContactComponent } from './contact/contact.component';
 import { CoursesComponent } from './courses/courses.component';
 import { DashbordComponent } from './dashbord/dashbord.component';
 import { HomeComponent } from './home/home.component';
@@ -18,11 +18,14 @@ import { RegisterComponent } from './register/register.component';
 import { SearchComponent } from './search/search.component';
 import { UsersComponent } from './users/users.component';
 import { ViewcoursesComponent } from './viewcourses/viewcourses.component';
+import { DashmenuComponent } from './dashmenu/dashmenu.component';
 
 import { MaterialModule } from './material.module';
 import {BrowserAnimationsModule, NoopAnimationsModule} from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from './auth.service';
+import { AuthGuard } from './auth.guard';
+import { ContactService } from './contact.service';
 
 
 @NgModule({
@@ -30,7 +33,7 @@ import { AuthService } from './auth.service';
     AppComponent,
     AddcoursesComponent,
     CommentsComponent,
-    ContactusComponent,
+    ContactComponent,
     CoursesComponent,
     DashbordComponent,
     HomeComponent,
@@ -39,7 +42,8 @@ import { AuthService } from './auth.service';
     RegisterComponent,
     SearchComponent,
     UsersComponent,
-    ViewcoursesComponent
+    ViewcoursesComponent,
+    DashmenuComponent
   ],
   imports: [
     AppRoutingModule,
@@ -51,7 +55,10 @@ import { AuthService } from './auth.service';
     ReactiveFormsModule,
     FormsModule
   ],
-  providers: [CoursesService,AuthService],
+  providers: [CoursesService,
+    AuthService,
+    AuthGuard,
+    ContactService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

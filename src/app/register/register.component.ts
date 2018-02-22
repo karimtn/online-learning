@@ -10,6 +10,8 @@ import { FormGroup, Validators, FormBuilder } from '@angular/forms';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
+  hide = true;
+  visible = 0;
 
   registerForm: FormGroup;
   constructor(private fb: FormBuilder, private authService: AuthService, private router: Router) {
@@ -25,10 +27,10 @@ export class RegisterComponent implements OnInit {
   }
 
   ngOnInit() {
-    const hide = true;
   }
 
   onClickRegister(register) {
+    this.visible = 1;
     this.authService.register(this.registerForm.value)
       .subscribe((res) => {
         if (res === true) {
