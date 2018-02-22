@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { AuthService } from '../auth.service';
+import { ContactService } from '../contact.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -12,10 +12,10 @@ export class ContactComponent implements OnInit {
   visible = 0;
 
   contactForm: FormGroup;
-  constructor(private fb: FormBuilder, private authService: AuthService, private router: Router) {
+  constructor(private fb: FormBuilder, private contactService: ContactService, private router: Router) {
     this.contactForm = fb.group({
       'name': ['', Validators.required ],
-      'email': ['', Validators.email, Validators.required],
+      'email': ['', [Validators.email, Validators.required]],
       'subject': ['', Validators.required ],
       'message': ['', Validators.required ]
     })
@@ -26,5 +26,13 @@ export class ContactComponent implements OnInit {
 
   onClickContact(){
     this.visible = 1;
+    this.contactService.contactus(this.contactForm.value)
+      .subscribe((res)=>{
+        if(res == true) {
+          this.router.navigateByUrl('');
+        }
+      });
+      return false;
   }
+
 }

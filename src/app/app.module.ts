@@ -25,6 +25,7 @@ import {BrowserAnimationsModule, NoopAnimationsModule} from '@angular/platform-b
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from './auth.service';
 import { AuthGuard } from './auth.guard';
+import { ContactService } from './contact.service';
 
 
 @NgModule({
@@ -56,7 +57,8 @@ import { AuthGuard } from './auth.guard';
   ],
   providers: [CoursesService,
     AuthService,
-    AuthGuard],
+    AuthGuard,
+    ContactService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
